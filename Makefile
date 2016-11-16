@@ -16,7 +16,7 @@ $(JOURNAL).adoc:
 
 define JOURNAL_CSS
 body {
-    font-family: "Georgia", "Baskerville";
+    font-family: "Palatino", "Georgia", "Baskerville";
     padding: 0px;
     margin: 0px;
 }
@@ -49,7 +49,8 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Gill Sans Light", "Helvetica", "Arial";
+    font-family: "Gill Sans", "Helvetica", "Arial";
+	font-weight: normal; /* lighter */
     color: #202070;
 }
 
@@ -64,7 +65,7 @@ a {
 
 a:hover {
     color: #7070f0;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 ul {
@@ -81,7 +82,8 @@ ul p {
 
 #header {
     text-align: center;
-    font-family: "Helvetica", "Arial";
+    font-family: "Gill Sans", "Helvetica", "Arial";
+	font-weight: lighter;
 }
 
 #header span.email:after {
@@ -119,8 +121,10 @@ ul p {
     top: 0;
     overflow-y: scroll;
 }
+
 #toctitle {
     margin-top: 2em;
+	font-weight: normal;
 }
 
 /* Snagged this from https://css-tricks.com/snippets/css/make-pre-text-wrap/ */
