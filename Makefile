@@ -48,6 +48,10 @@ body {
     text-align: right;    
 }
 
+.line-through {
+	text-decoration: line-through;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: "Gill Sans", "Helvetica", "Arial";
 	font-weight: normal; /* lighter */
