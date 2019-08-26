@@ -163,20 +163,19 @@ define JOURNAL_LOG
 ///////////////////////////////////
 
 ifndef::included[]
-Journal
-=======
+= Journal
 $(AUTHOR)
 :toc: left
 :toclevels: 6
 
 
-## Introduction
+== Introduction
 
 A work journal.
 
 endif::[]
 
-## Feb 1 - 5, 2016
+== Feb 1 - 5, 2016
 
 .February 1, 2016 - Monday
 * An entry.
@@ -184,8 +183,7 @@ endif::[]
 endef
 
 define JOURNAL_TXT
-Main
-====
+= Main
 $(AUTHOR)
 :toc: left
 :toclevels: 6
@@ -193,7 +191,7 @@ $(AUTHOR)
 // :linkcss:
 
 [[journal_start]]
-## Journal
+== Journal
 
 :included: true
 :leveloffset: 1
