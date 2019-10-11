@@ -1,18 +1,22 @@
 JOURNAL=foo
 AUTHOR=user <user@domain.com>
-NOTES=$(shell find notes -name \*.adoc | sed -e 's/.adoc/.html/')
+DSTDIR=html
+NOTES=$(shell find notes -name \*.adoc | sed -E 's/(.*)\.adoc/$(DSTDIR)\/\1\.html/')
 .PHONY: init clean
 
-all: $(JOURNAL).html $(JOURNAL)_journal.html $(NOTES)
+all: $(DSTDIR)/$(JOURNAL).html $(DSTDIR)/$(JOURNAL)_journal.html $(NOTES)
 
-$(JOURNAL).html: $(JOURNAL).adoc $(JOURNAL)_journal.adoc
-	asciidoctor $(<)
+clean:
+	rm -fr "$(DSTDIR)"
+
+html/$(JOURNAL).html: $(JOURNAL).adoc $(JOURNAL)_journal.adoc
+	asciidoctor -D $(DSTDIR)/`dirname $(<)` $(<)
+
+$(DSTDIR)/%.html: %.adoc
+	asciidoctor -D $(DSTDIR)/`dirname $(<)` $(<)
 
 $(JOURNAL).adoc:
 	make init
-
-%.html: %.adoc
-	asciidoctor $(<)
 
 define JOURNAL_CSS
 body {
