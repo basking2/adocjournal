@@ -2,7 +2,7 @@ JOURNAL=foo
 AUTHOR=user <user@domain.com>
 DSTDIR=html
 NOTES=$(shell find notes -name \*.adoc | sed -E 's/(.*)\.adoc/$(DSTDIR)\/\1\.html/')
-.PHONY: init clean
+.PHONY: init clean wall watch
 
 all: $(DSTDIR)/$(JOURNAL).html $(DSTDIR)/$(JOURNAL)_journal.html $(NOTES)
 
@@ -11,6 +11,17 @@ clean:
 
 html/$(JOURNAL).html: $(JOURNAL).adoc $(JOURNAL)_journal.adoc
 	asciidoctor -D $(DSTDIR)/`dirname $(<)` $(<)
+
+watch:
+	if [[ -x "`which inotifywait`" ]]; then \
+		while inotifywait -r -e modify,create,delete "`pwd`"; do \
+			make all ; \
+		done ;  \
+	elif [[ -x "`which fswatch`" ]]; then \
+		while fswatch -1 -r -x Created,Updated,Removed,Renamed,MovedTo "`pwd`"; do \
+			make all ; \
+		done ; \
+	fi
 
 $(DSTDIR)/%.html: %.adoc
 	asciidoctor -D $(DSTDIR)/`dirname $(<)` $(<)
