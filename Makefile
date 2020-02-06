@@ -18,7 +18,7 @@ watch:
 			make all ; \
 		done ;  \
 	elif [[ -x "`which fswatch`" ]]; then \
-		while fswatch -1 -r -x Created,Updated,Removed,Renamed,MovedTo "`pwd`"; do \
+		while fswatch -1 -e Makefile -x -r --event Created --event Updated --event Removed --event Renamed --event MovedTo "`pwd`"; do \
 			make all ; \
 		done ; \
 	fi
