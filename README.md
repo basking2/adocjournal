@@ -17,6 +17,9 @@ these values in the `Rakefile`:
 The `JOURNAL` value is the name of your journal.
 The `AUTHOR` is the AsciiDoc author.
 
+Once done, run `bundle exec rake init` to initialize the journal.
+To build the journal, run `bundle exec rake`.
+
 ## Layout / How To Use
 
 Assuming your `JOURNAL` is named `foo`:
