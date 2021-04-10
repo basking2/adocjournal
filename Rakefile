@@ -241,7 +241,6 @@ endif::[]
 .February 1, 2016 - Monday
 * An entry.
 
-endef
 EOF
 
 JOURNAL_TXT = <<EOF
