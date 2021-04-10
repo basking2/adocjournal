@@ -151,7 +151,6 @@ ul p {
 }
 
 #header span.email:after {
-    content: '\A';
     white-space: pre;
 }
 
