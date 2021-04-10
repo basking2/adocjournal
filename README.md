@@ -1,15 +1,15 @@
 # AdocJournal
 
-A simple `Makefile` to create and maintain my `asciidoc` journal.
+A simple `Rakefile` to create and maintain my `asciidoc` journal.
 
 ## Prerequisites
 
-Install `asciidoc` and `make`.
+Ruby and Bundler.
 
 ## Setup
 
 You can manually tweak anything, but your life will be easier if you set
-these values in the `Makefile`:
+these values in the `Rakefile`:
 
     JOURNAL=foo
     AUTHOR=user <user@domain.com>
@@ -31,3 +31,4 @@ Assuming your `JOURNAL` is named `foo`:
    in or on a new project. You can always link the `notes/anything.adoc`
    file into the main `foo.adoc` file, include it in the `foo_journal.adoc`
    file, or even just link to it with `link:notes/anything.html[]`.
+   The directories `notes`, `projects` and `scraps` are all scanned for adoc files.
