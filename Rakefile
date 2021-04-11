@@ -270,6 +270,20 @@ task :htmldocs => [ directory(htmldir), *htmldocs ]
 
 task :pdfdocs => [ directory(pdfdir), *pdfdocs ] 
 
+desc "Watch this directory for changes and rebuild on changes."
+task :watch do
+  require 'listen'
+  listener = Listen.to('.') do |modified, added, removed|
+    if modified.length > 0 || added.length > 0
+      Rake::Task[:default].invoke
+      Rake.application.tasks.each { |t| t.reenable }
+    end
+  end
+
+  listener.start
+  sleep
+end
+
 task :init => [
   directory(htmldir),
   directory(pdfdir), 
